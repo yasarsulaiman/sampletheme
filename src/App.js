@@ -1,24 +1,32 @@
 import logo from './logo.svg';
 import './App.css';
+import ButtonAppBar from './Components/Header/Header';
+import SideBar from './Components/SideBar/Sidebar';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import './Themes/Dark/styles/theme.scss';
+import theme from './Themes/Dark/js/theme.json';
+
+const outerTheme = createTheme({
+  palette: {
+    primary: {
+      main: theme['main-primary']
+    },
+  },
+});
+
+console.log({outerTheme});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <ThemeProvider theme={outerTheme} >
+            <div className="App">
+              <ButtonAppBar />
+              <section>
+                <SideBar /> 
+              </section>
+            </div>
+      </ThemeProvider>
+
   );
 }
 
