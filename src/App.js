@@ -3,8 +3,12 @@ import './App.css';
 import ButtonAppBar from './Components/Header/Header';
 import SideBar from './Components/SideBar/Sidebar';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import './Themes/Dark/styles/theme.scss';
-import theme from './Themes/Dark/js/theme.json';
+import { exportedTheme as theme } from './themeprovider';
+if(process.env.REACT_APP_THEME === "Dark"){
+  import('./Themes/Dark/styles/theme.scss')
+}else{
+  import('./Themes/Light/styles/theme.scss')
+}
 
 const outerTheme = createTheme({
   palette: {
