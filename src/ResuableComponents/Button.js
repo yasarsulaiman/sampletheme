@@ -11,7 +11,6 @@ const Button = styled.a`
     color: white;
     border: 2px solid white;
     background: ${theme['main-primary']};
-    color: black;
     text-align:center;
 }
 `
