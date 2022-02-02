@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import ButtonAppBar from './Components/Header/Header';
 import SideBar from './Components/SideBar/Sidebar';
+import Content from './Components/Content/Content';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { exportedTheme as theme } from './themeprovider';
 if(process.env.REACT_APP_THEME === "Dark"){
@@ -27,6 +28,7 @@ function App() {
               <ButtonAppBar />
               <section>
                 <SideBar /> 
+                <Content />
               </section>
             </div>
       </ThemeProvider>
