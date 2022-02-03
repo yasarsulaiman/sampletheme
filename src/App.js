@@ -1,38 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
 import ButtonAppBar from './Components/Header/Header';
 import SideBar from './Components/SideBar/Sidebar';
 import Content from './Components/Content/Content';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { exportedTheme as theme } from './themeprovider';
-if(process.env.REACT_APP_THEME === "Dark"){
-  import('./Themes/Dark/styles/theme.scss')
-}else{
-  import('./Themes/Light/styles/theme.scss')
-}
+import { darkTheme,lightTheme,defaultTheme } from './themes';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { red } from '@mui/material/colors'
+import { customizeTheme } from './utils/customizeTheme';
 
-const outerTheme = createTheme({
-  palette: {
-    primary: {
-      main: theme['main-primary']
-    },
-  },
-});
-
-console.log({outerTheme});
-
-function App() {
+function App({theme}) {
+  let themeDetails = null;
+  if(!theme){
+    themeDetails = customizeTheme(defaultTheme);
+  }else{
+    themeDetails = theme === "dark" ? customizeTheme(darkTheme) : customizeTheme(lightTheme);
+  }
   return (
-      <ThemeProvider theme={outerTheme} >
-            <div className="App">
-              <ButtonAppBar />
-              <section>
-                <SideBar /> 
-                <Content />
-              </section>
-            </div>
-      </ThemeProvider>
-
+    <ThemeProvider theme={themeDetails} >
+        <div className="App">
+          <ButtonAppBar />
+          {/* <section>
+            <SideBar /> 
+            <Content />
+          </section> */}
+        </div>
+    </ThemeProvider>
   );
 }
 

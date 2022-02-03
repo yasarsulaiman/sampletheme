@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { exportedTheme as theme } from '../themeprovider';
 
 const Button = styled.a`
     display: inline-block;
@@ -10,7 +9,7 @@ const Button = styled.a`
     background: transparent;
     color: white;
     border: 2px solid white;
-    background: ${theme['main-primary']};
+    background: black;
     text-align:center;
 }
 `
